@@ -1,0 +1,30 @@
+export class Usuario {
+    constructor(_id='',nombre='',password='',password_conf="",apellido='',email='', telefono='',img='',role='',estado='',google='',edad='',sexo=''){
+        this._id=_id;
+        this.password=password;
+        this.apellido=apellido;
+        this.nombre=nombre;
+        this.email=email;
+        this.telefono=telefono;
+        this.password_conf=password_conf;
+        this.img=img;
+        this.role=role;
+        this.estado=estado;
+        this.google=google;
+        this.edad=edad;
+        this.sexo=sexo;
+    }
+    _id:string;
+    nombre:string;
+    password:string;
+    email:string;
+    telefono:string;
+    apellido:string;
+    password_conf:string;
+    img:string;
+    role:string;
+    estado:string;
+    google:string;
+    edad:string;
+    sexo:string;
+}

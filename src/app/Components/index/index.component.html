@@ -1,0 +1,73 @@
+
+<form #UsuariosNewForm="ngForm" (ngSubmit)="addUsuario(UsuariosNewForm)" >
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="UsuarioService.selecteUsuario._id">    
+    <input id="user" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.nombre" placeholder="Nombre" type="text" class="input">
+    <input id="apellido" placeholder="Apellido" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.apellido" type="text" class="input">
+    <input id="pass"  name="password" placeholder="contraseña" #password="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.password" type="password" class="input" data-type="password">
+    <input id="telefono" name="telefono" placeholder="telefono" #telefono="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.telefono" type="text" class="input">
+    <input id="img" name="img" #img="ngModel" placeholder="img" [(ngModel)]="UsuarioService.selecteUsuario.img" type="text" class="input">
+    <input id="email" name="email" #email="ngModel" placeholder="email" [(ngModel)]="UsuarioService.selecteUsuario.email" type="text" class="input">
+    <input id="role" name="role" list="LtipoLibro" #role="ngModel" placeholder="role" [(ngModel)]="UsuarioService.selecteUsuario.role" type="text" class="input">
+        <datalist id="LtipoLibro">
+            <option value="Admin">Admin</option>
+            <option value="Usuario">Usuario</option> 
+    </datalist>
+    <input id="edad" name="edad"  #edad="ngModel" placeholder="edad" [(ngModel)]="UsuarioService.selecteUsuario.edad" type="text" class="input">
+    <br>
+    <input type="radio" id="sexo" name="sexo" value="Mujer" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+    <label for="sexo">Mujer</label>
+    <br>
+    <input type="radio" id="sexo" name="sexo" value="Hombre" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+    <label for="sexo">Hombre</label>
+    <br>
+    <input type="radio" id="sexo" name="sexo" value="Otho" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+    <label for="sexo">Otho</label>
+    <br>
+    <input type="submit" class="button" value="Guardar">
+</form>
+<input type="submit" class="button" (click)=limpiar(UsuariosNewForm) value="limpiar">
+    
+       <table class="table table-striped table-dark" >
+            <thead>
+                <th scope="row" >nombre</th>
+                <th scope="row">apellido</th>
+                <th scope="row">contraseña</th>
+                <th>telefono</th>
+                <th>email</th>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let usuarios of UsuarioService.usuarios">
+                    <td>{{usuarios.nombre}}</td>
+                    <td>{{usuarios.apellido}}</td>
+                    <td>{{usuarios.password}}</td>
+                    <td>{{usuarios.telefono}}</td>
+                    <td>{{usuarios.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped table-dark" >
+            <thead>
+                <th>img</th>
+                <th>role</th>
+                <th>estado</th>
+                <th>google</th>
+                <th>sexo</th>
+                <th>edad</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let usuarios of UsuarioService.usuarios">
+                    <img src="{{usuarios.img}}" style="width: 120px;">
+                    <td>{{usuarios.role}}</td>
+                    <td>{{usuarios.estado}}</td>
+                    <td>{{usuarios.google}}</td>
+                    <td>{{usuarios.sexo}}</td>
+                    <td>{{usuarios.edad}}</td>
+                    <td>  <input type="submit" class="button" value="Editar" (click)="editUsuario(usuarios)"> 
+                        <input type="submit" class="button" value="Eliminar" (click)="eliminarUsuario(usuarios._id) " >     
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+   

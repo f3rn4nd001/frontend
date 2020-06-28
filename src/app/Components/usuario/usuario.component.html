@@ -1,0 +1,101 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-html">
+            <ng-container *ngIf="!UsuarioService.loggedIn(); else loggedIn">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            </ng-container>
+
+            <ng-template #loggedIn>
+                <input id="tab-1" type="radio" name="tab" class="sign-in"  (click)="UsuarioService.logout()"><label for="tab-1" class="tab">Logout</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up" checked ><label for="tab-2" class="tab">Sign In</label>            
+            </ng-template>
+              <div class="login-form">
+                    <div class="sign-in-htm">
+                        <form #loginNewForm="ngForm" (ngSubmit)="loginUser(UserNewForm)" >
+                        <div class="group">
+                            <label for="emails" class="label">Email</label>
+                            <input id="emails" name="email" #email="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.email" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="passs" name="pass" #pass="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.password" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Forgot Password?</a>
+                        </div>
+                        </form>
+
+                    </div>
+                <div class="sign-up-htm">           
+                    <form #UserNewForm="ngForm" (ngSubmit)="addUser(UserNewForm)" >
+                        <div class="group">
+                            <label for="user" class="label">nombre</label>
+                            <input id="user" name="nombre" #nombre="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.nombre" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="apellido" class="label">apellido</label>
+                            <input id="apellido" name="apellido" #apellido="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.apellido" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass"  name="password" #password="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.password" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="passconfirm" class="label">Password confirm</label>
+                            <input id="passconfirm"  name="password_conf" #password_conf="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.password_conf" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="telefono" class="label">telefono</label>
+                            <input id="telefono" name="telefono" #telefono="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.telefono" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="img" class="label">img</label>
+                            <input id="img" name="img" #img="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.img" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="email" class="label">Email </label>
+                            <input id="email" name="email" #email="ngModel" [(ngModel)]="UsuarioService.selecteUsuario.email" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="edad" class="label">Edad </label>
+                            <input id="edad" name="edad"  #edad="ngModel"  [(ngModel)]="UsuarioService.selecteUsuario.edad" type="text" class="input">
+                        </div><br>
+                        <div class="group">
+                            <label for="edad" class="label">Sexo </label>
+                            <br>
+                            <input type="radio" id="sexo" name="sexo" value="Mujer" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+                            <label for="sexo" style="font-size:20px">Mujer</label><label for="" style="width: 80px;"></label>
+                            <input type="radio" id="sexo" name="sexo" value="Hombre" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+                            <label for="sexo" style="font-size:20px">Hombre</label><label for="" style="width: 80px;"></label>
+                            <input type="radio" id="sexo" name="sexo" value="Otho" #sexo="ngModel"[(ngModel)]="UsuarioService.selecteUsuario.sexo">
+                            <label for="sexo" style="font-size:20px">Otho</label>
+                                                    
+                        </div>
+                        <div class="group">
+                            
+                            <input type="submit" class="button" value="Sign Up">
+                        </div>
+                        <div class="hr"></div>
+                    </form>
+                    </div>               
+            </div>
+        </div>
+    </div>
+<div>   
+
+</div>
+</body>
